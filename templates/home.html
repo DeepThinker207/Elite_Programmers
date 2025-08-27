@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Elite Programmers - Home</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+</head>
+
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <!-- Logo -->
+    <div class="logo">
+      🚀 Elite Programmers
+    </div>
+
+    <!-- Navigation Links -->
+    <ul class="nav-links">
+      <li><a href="{{ url_for('home') }}">Home</a></li>
+      <li><a href="#">Explore</a></li>
+      <li><a href="#">Projects</a></li>
+      <li><a href="#">Community</a></li>
+      <li><a href="{{ url_for('register') }}">Register</a></li>
+      <li><a href="{{ url_for('login') }}">Login</a></li>
+    </ul>
+
+    <!-- Right-side Icons -->
+    <div class="nav-icons">
+      <!-- Notification Button -->
+      <button class="icon-btn" title="Notifications">🔔</button>
+      <!-- Message Button -->
+      <button class="icon-btn" title="Messages">Messages</button>
+      <!-- Profile Image -->
+      <img src="profile.png" alt="Profile" class="profile-img">
+    </div>
+  </nav>
+
+  <!-- Flash Messages -->
+  {% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+  <div class="flash-messages">
+    {% for category, message in messages %}
+    <div class="alert {{ category }}">{{ message }}</div>
+    {% endfor %}
+  </div>
+  {% endif %}
+  {% endwith %}
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>Join the Community of Developers!</h1>
+    <h2>
+      <p>Elite Programmers deserve a community that speaks their language.</p>
+    </h2>
+    <a href="{{ url_for('register') }}" class="btn primary-btn">Get Started</a>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features">
+    <h3>Turn your code into connections. Share your work, build your network, and shape your future.</h3>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <i class="fa fa-user"></i>
+        <h3>Developer Profiles</h3>
+        <p>Showcase your skills, projects, GitHub repos, and LinkedIn profile in one place.</p>
+      </div>
+      <div class="feature-card">
+        <i class="fa fa-code"></i>
+        <h3>Code Sharing</h3>
+        <p>Upload and share code snippets, projects, and collaborate with others.</p>
+      </div>
+      <div class="feature-card">
+        <i class="fa fa-users"></i>
+        <h3>Networking</h3>
+        <p>Follow other developers, message them, and build your coding network.</p>
+      </div>
+      <div class="feature-card">
+        <i class="fa fa-briefcase"></i>
+        <h3>Opportunities</h3>
+        <p>Discover internships, jobs, and hackathons posted by the community.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="cta">
+    <h2>Ready to level up your coding journey?</h2>
+    <a href="{{ url_for('register') }}" class="btn primary-btn">Join Now</a>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 Elite Programmers | Built for Developers, by Developers 💻</p>
+  </footer>
+
+  
+
+</body>
+
+</html>

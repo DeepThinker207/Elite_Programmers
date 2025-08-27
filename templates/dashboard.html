@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .dashboard-container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+        .profile-section, .activity-feed {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+        .profile-section h2, .activity-feed h2 {
+            color: #2c3e50;
+            margin-top: 0;
+        }
+        .profile-details p {
+            margin: 5px 0;
+        }
+        .action-links a {
+            display: inline-block;
+            margin-right: 10px;
+            color: #1abc9c;
+            text-decoration: none;
+            padding: 5px 10px;
+            border: 1px solid #1abc9c;
+            border-radius: 5px;
+        }
+        .action-links a:hover {
+            background-color: #1abc9c;
+            color: #fff;
+        }
+        .activity-item {
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+        }
+        .activity-item:last-child {
+            border-bottom: none;
+        }
+    </style>
+</head>
+<body>
+    {% extends "base.html" %}
+    {% block title %}Dashboard{% endblock %}
+    {% block content %}
+        <div class="dashboard-container">
+            <h1>Welcome, {{ current_user.username }}!</h1>
+
+            <!-- Profile Section -->
+            <div class="profile-section">
+                <h2>Profile</h2>
+                <div class="profile-details">
+                    <p><strong>Username:</strong> {{ current_user.username }}</p>
+                    <p><strong>Bio:</strong> [Add your bio here]</p>
+                    <p><strong>Email:</strong> {{ current_user.email }}</p>
+                    <a href="/edit-profile">Edit Profile</a>
+                </div>
+            </div>
+
+            <!-- Activity Feed -->
+            <div class="activity-feed">
+                <h2>Recent Activity</h2>
+                <div class="activity-items">
+                    <div class="activity-item">
+                        <p>No recent activity yet. <a href="/create-post">Create a post</a> or <a href="/create-repo">start a project</a>!</p>
+                    </div>
+                    <!-- Future activity items can be added here dynamically -->
+                </div>
+            </div>
+
+            <!-- Action Links -->
+            <div class="action-links">
+                <a href="/create-post">Create Post</a>
+                <a href="/create-repo">Create Repository</a>
+                <a href="/network">Find Connections</a>
+            </div>
+        </div>
+    {% endblock %}
+</body>
+</html>
