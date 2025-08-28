@@ -1,3 +1,4 @@
+import os
 from flask import Flask, render_template, redirect, url_for, flash, request
 from flask_pymongo import PyMongo
 from flask_login import LoginManager, login_user, logout_user, login_required, current_user, UserMixin
@@ -7,7 +8,7 @@ from wtforms.validators import DataRequired, Email, Length
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'your_secret_key_here'
-app.config['MONGO_URI'] = 'mongodb://localhost:27017/elite_programmers_db'
+app.config['MONGO_URI'] = os.environ.get("MONGO_URI")
 
 mongo = PyMongo(app)
 login_manager = LoginManager()
